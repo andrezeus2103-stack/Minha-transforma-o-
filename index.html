@@ -10,6 +10,13 @@
 <style>
 :root{--gold:#b89542;--gold-light:#f7f0df;--ink:#30343b;--muted:#747b84;--line:#ece8df;--paper:#fff;--soft:#faf9f6}
 *{box-sizing:border-box}
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js");
+  });
+}
+</script>
 body{margin:0;background:var(--soft);color:var(--ink);font-family:Arial,sans-serif}
 header{background:#fff;text-align:center;padding:25px 18px 22px;border-bottom:1px solid var(--line)}
 .logo{width:66px;height:66px;margin:0 auto 10px;border:2px solid var(--gold);border-radius:20px;display:grid;place-items:center;background:#fff;color:var(--gold);font-size:31px}
