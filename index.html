@@ -1,88 +1,95 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#123b2c">
+<meta name="theme-color" content="#ffffff">
 <title>Minha Transformação</title>
 <style>
+:root{--gold:#b89542;--gold-light:#f7f0df;--ink:#30343b;--muted:#747b84;--line:#ece8df;--paper:#fff;--soft:#faf9f6}
 *{box-sizing:border-box}
-body{margin:0;background:#f2f4ef;color:#24352b;font-family:Arial,sans-serif}
-header{background:#123b2c;color:white;padding:28px 20px;text-align:center}
-main{max-width:600px;margin:auto;padding:18px}
-.card{background:white;border-radius:14px;padding:18px;margin-bottom:14px}
-h2{font-size:19px;margin-top:0}
-.item{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #eee}
-input[type=checkbox]{width:21px;height:21px;accent-color:#236c49}
-progress{width:100%;height:14px}
-button{background:#236c49;color:white;border:0;border-radius:9px;padding:12px 16px;font-size:15px}
-footer{text-align:center;padding:20px;color:#657268;font-size:13px}
+body{margin:0;background:var(--soft);color:var(--ink);font-family:Arial,sans-serif}
+header{background:#fff;text-align:center;padding:25px 18px 22px;border-bottom:1px solid var(--line)}
+.logo{width:66px;height:66px;margin:0 auto 10px;border:2px solid var(--gold);border-radius:20px;display:grid;place-items:center;background:#fff;color:var(--gold);font-size:31px}
+h1{font-size:24px;margin:0;color:#30343b}
+header p{margin:7px 0 0;color:var(--muted);font-size:14px}
+main{max-width:620px;margin:auto;padding:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:14px;box-shadow:0 3px 12px #302b1b08}
+h2{font-size:17px;margin:0 0 13px;color:#80652c}
+.sub{font-size:13px;color:var(--muted);margin:0 0 12px}
+progress{width:100%;height:12px;accent-color:var(--gold)}
+#count{font-size:13px;color:var(--muted);margin:8px 0 0}
+.item{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #f0eee9;font-size:15px;line-height:1.35}
+.item:last-child{border:0;padding-bottom:0}
+input[type=checkbox]{width:21px;height:21px;flex:none;accent-color:var(--gold)}
+.verse{background:var(--gold-light);border:1px solid #eadbb7}
+.verse p{font-size:16px;line-height:1.5;margin:0 0 9px}
+.verse strong{font-size:13px;color:#80652c}
+button{background:var(--gold);color:#fff;border:0;border-radius:10px;padding:12px 16px;font-size:14px;font-weight:600}
+footer{text-align:center;padding:12px 20px 28px;color:var(--muted);font-size:13px}
 </style>
 </head>
 <body>
 <header>
-<h1>Minha Transformação 🙏</h1>
-<p>90 dias de fé, disciplina e propósito</p>
+<div class="logo" aria-label="Símbolo de fé">✝</div>
+<h1>Minha Transformação</h1>
+<p>90 dias de fé, paz e propósito</p>
 </header>
 <main>
-<div class="card">
+<section class="card">
 <h2>Minha caminhada</h2>
-<p>Meu progresso de hoje:</p>
+<p class="sub">Pequenos passos, todos os dias.</p>
 <progress id="progress" value="0" max="6"></progress>
 <p id="count">0 de 6 hábitos concluídos</p>
-</div>
-<div class="card">
+</section>
+<section class="card">
 <h2>🙏 Minha vida com Deus</h2>
 <label class="item"><input type="checkbox"> Fazer minha oração</label>
 <label class="item"><input type="checkbox"> Ler a Bíblia</label>
-</div>
-<div class="card">
+</section>
+<section class="card">
 <h2>💪 Meu caráter e minhas atitudes</h2>
 <label class="item"><input type="checkbox"> Agir com honestidade e respeito</label>
-</div>
-<div class="card">
+</section>
+<section class="card">
 <h2>💰 Minha vida financeira e profissional</h2>
 <label class="item"><input type="checkbox"> Trabalhar na minha meta profissional</label>
-</div>
-<div class="card">
+</section>
+<section class="card">
 <h2>❤️ Minha vida emocional</h2>
 <label class="item"><input type="checkbox"> Cuidar das minhas emoções e cultivar a paz</label>
-</div>
-<div class="card">
+</section>
+<section class="card">
 <h2>🎯 Minha disciplina</h2>
 <label class="item"><input type="checkbox"> Cumprir minha rotina e cuidar de mim</label>
-</div>
-<div class="card">
-<h2>📖 Palavra do dia</h2>
-<p>Buscai primeiro o Reino de Deus e a sua justiça.</p>
+</section>
+<section class="card verse">
+<h2>📖 Palavra para hoje</h2>
+<p>“Buscai primeiro o Reino de Deus, e a sua justiça.”</p>
 <strong>Mateus 6:33</strong>
-</div>
-<div class="card">
+</section>
+<section class="card">
 <button onclick="resetar()">Reiniciar checklist do dia</button>
-</div>
+</section>
 </main>
-<footer>Um dia de cada vez. Deus à frente! 🙏</footer>
+<footer>Um dia de cada vez. Deus à frente! 🤍</footer>
 <script>
 const checks=[...document.querySelectorAll('input[type=checkbox]')];
 checks.forEach((c,i)=>{
-c.checked=localStorage.getItem('habito'+i)==='1';
-c.addEventListener('change',()=>{
-localStorage.setItem('habito'+i,c.checked?'1':'0');
-atualizar();
-});
+  c.checked=localStorage.getItem('habito'+i)==='1';
+  c.addEventListener('change',()=>{
+    localStorage.setItem('habito'+i,c.checked?'1':'0');
+    atualizar();
+  });
 });
 function atualizar(){
-let n=checks.filter(c=>c.checked).length;
-document.getElementById('progress').value=n;
-document.getElementById('count').textContent=n+' de 6 hábitos concluídos';
+  const n=checks.filter(c=>c.checked).length;
+  document.getElementById('progress').value=n;
+  document.getElementById('count').textContent=n+' de 6 hábitos concluídos';
 }
 function resetar(){
-checks.forEach((c,i)=>{
-c.checked=false;
-localStorage.removeItem('habito'+i);
-});
-atualizar();
+  checks.forEach((c,i)=>{c.checked=false;localStorage.removeItem('habito'+i);});
+  atualizar();
 }
 atualizar();
 </script>
